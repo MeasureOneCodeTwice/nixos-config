@@ -79,6 +79,36 @@
   #   enableSSHSupport = true;
   # };
 
+  services.tlp.enable = true;
+  #taken from this great blog
+  #https://linuxblog.io/thinkpad-t14s-gen-3-amd-linux-user-review-tweaks/
+  #trades extra performance for battery. 
+  services.tlp.settings = {
+
+    CPU_DRIVER_OPMODE_ON_AC="passive";
+    CPU_DRIVER_OPMODE_ON_BAT="passive";
+
+    CPU_SCALING_GOVERNOR_ON_AC="ondemand";
+    CPU_SCALING_GOVERNOR_ON_BAT="conservative";
+
+    CPU_BOOST_ON_AC=0;
+    CPU_BOOST_ON_BAT=0;
+
+    PLATFORM_PROFILE_ON_AC="balanced";
+    PLATFORM_PROFILE_ON_BAT="low-power";
+
+    RADEON_DPM_PERF_LEVEL_ON_AC="auto";
+    RADEON_DPM_PERF_LEVEL_ON_BAT="low";
+
+    USB_EXCLUDE_BTUSB=1;
+
+    DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE="bluetooth nfc wifi wwan";
+
+    START_CHARGE_THRESH_BAT0=50;
+    STOP_CHARGE_THRESH_BAT0=80;
+
+    NATACPI_ENABLE=1;
+  };
   #nvim config
   #Use the Nix package search engine to find
   #even more plugins : https://search.nixos.org/packages
