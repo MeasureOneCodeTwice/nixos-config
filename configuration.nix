@@ -16,13 +16,13 @@
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;
+
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Winnipeg";
@@ -33,7 +33,6 @@
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
-    variant = "dvorak";
   };
 
   # Configure console keymap
@@ -60,16 +59,31 @@
     openssh
     github-cli
     git
+    python3
+    sqlite
 
     #graphical applications
     firefox
     thunderbird
+    telegram-desktop
     
     #desktop environment specific packages
     wl-clipboard
     cliphist
     fuzzel
+    alsa-utils
+    brightnessctl
+
+    #required for work
+    slack
+    pritunl-client
+    
+    python312Packages.flask
   ];
+
+
+  systemd.packages = [ pkgs.pritunl-client ];
+  systemd.targets.multi-user.wants = [ "pritunl-client.service" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
