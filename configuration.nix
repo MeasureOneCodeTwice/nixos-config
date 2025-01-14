@@ -14,7 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "work"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
@@ -64,7 +64,7 @@
 
     #graphical applications
     firefox
-    thunderbird
+    #use gmail instead
     telegram-desktop
     
     #desktop environment specific packages
@@ -77,8 +77,14 @@
     #required for work
     slack
     pritunl-client
+    zoom-us
+    bitbucket-cli
+    jenkins
+    figma-linux #unofficial
+    # figma-agent
+    gitkraken
+    zulu23 #java (for bitbucket)
     
-    python312Packages.flask
   ];
 
 
