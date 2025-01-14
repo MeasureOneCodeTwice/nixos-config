@@ -74,16 +74,9 @@
     alsa-utils
     brightnessctl
 
-    #required for work
-    slack
-    pritunl-client
-    
     python312Packages.flask
   ];
 
-
-  systemd.packages = [ pkgs.pritunl-client ];
-  systemd.targets.multi-user.wants = [ "pritunl-client.service" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
