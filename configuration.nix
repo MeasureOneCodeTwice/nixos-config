@@ -61,11 +61,18 @@
     git
     python3
     sqlite
+    clang
+    pkgs.man-pages
+    pkgs.man-pages-posix
+    gnumake
+    valgrind
+    docker_26
 
     #graphical applications
     firefox
     thunderbird
     telegram-desktop
+    discord
     
     #desktop environment specific packages
     wl-clipboard
@@ -74,6 +81,7 @@
     alsa-utils
     brightnessctl
 
+    ventoy-full
     python312Packages.flask
   ];
 
@@ -109,7 +117,10 @@
 
     USB_EXCLUDE_BTUSB=1;
 
-    DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE="bluetooth nfc wifi wwan";
+    #possibly caused wifi to be disabled. Use 
+    #'nmcli radio' to see if wifi is disabled.
+    #use 'nmcli radio wifi on' to enable wifi.
+    DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE="bluetooth nfc wwan";
 
     START_CHARGE_THRESH_BAT0=50;
     STOP_CHARGE_THRESH_BAT0=80;
