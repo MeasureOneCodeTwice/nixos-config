@@ -87,7 +87,8 @@
     telegram-desktop
     discord
     gimp
-    qimgv
+    swayimg #everything but pdf viewer
+    zathura #pdf viewer
     
     #desktop environment specific packages
     wl-clipboard
