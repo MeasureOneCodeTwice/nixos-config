@@ -42,7 +42,7 @@
   users.users.logan = {
     isNormalUser = true;
     description = "Logan Decock";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
   };
 
@@ -55,24 +55,39 @@
   environment.systemPackages = with pkgs; [
 
     #terminal applications 
-    tmux
-    openssh
-    github-cli
-    git
-    python3
-    sqlite
-    clang
-    pkgs.man-pages
-    pkgs.man-pages-posix
-    gnumake
-    valgrind
-    docker_26
+
+        #development
+        github-cli
+        git
+        python3
+        python312Packages.pip
+        python312Packages.flask
+        sqlite
+        clang
+        gcc
+        pkgs.man-pages
+        pkgs.man-pages-posix
+        gnumake
+        valgrind
+        gdb
+
+        #terminal necisseties
+        tmux
+        openssh
+        zip
+        unzip
+
+    texliveFull
+    ventoy-full
+ 
 
     #graphical applications
     firefox
     thunderbird
     telegram-desktop
     discord
+    gimp
+    qimgv
     
     #desktop environment specific packages
     wl-clipboard
@@ -80,12 +95,11 @@
     fuzzel
     alsa-utils
     brightnessctl
-
-    ventoy-full
-    python312Packages.flask
+    wl-clipboard #nvim uses to interface with clipboard
   ];
 
-
+  
+  virtualisation.docker.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -93,6 +107,13 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = ["logan"];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
+
 
   services.tlp.enable = true;
   #taken from this great blog
@@ -171,6 +192,8 @@
           awesome-vim-colorschemes
           vim-vinegar
           vim-commentary
+          markdown-preview-nvim
+
 	];
       };
     };
