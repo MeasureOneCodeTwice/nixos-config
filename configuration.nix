@@ -128,7 +128,7 @@
     CPU_SCALING_GOVERNOR_ON_AC="ondemand";
     CPU_SCALING_GOVERNOR_ON_BAT="conservative";
 
-    CPU_BOOST_ON_AC=0;
+    CPU_BOOST_ON_AC=1;
     CPU_BOOST_ON_BAT=0;
 
     PLATFORM_PROFILE_ON_AC="balanced";
@@ -181,8 +181,13 @@
         highlight Comment cterm = italic ctermfg=Gray   "changes comment colour
         highlight Conceal ctermfg = darkGray    "sets conceal group (tab indicatior) color to gray
         let g:indentLine = '▏'  "sets the tab display character
-        
-        " set spell                 " enable spell check (may need to download language package)
+
+        map ; :
+        map <space>p "0p
+        map <space>P "0P
+        map <space>z yoprintf("pa: %d\n", pa);^
+ 
+        let g:vimtex_view_general_viewer = 'zathura'
         " set spell                 " enable spell check (may need to download language package)
 
       '';
@@ -193,6 +198,7 @@
           awesome-vim-colorschemes
           vim-vinegar
           vim-commentary
+          vimtex 
           markdown-preview-nvim
 
 	];
